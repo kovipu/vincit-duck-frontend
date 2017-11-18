@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import SightingList from './components/SightingList';
 import './App.css';
 
 class App extends Component {
@@ -8,28 +9,31 @@ class App extends Component {
     super(props);
 
     this.state = {
-      sightings: []
+      sightings: [],
+      species: []
     };
   }
 
   componentDidMount() {
     axios.get(this.props.server + '/sightings')
       .then(res => {
-        console.log(res)
         const sightings = res.data;
         this.setState({ sightings });
       });
+      axios.get(this.props.server + '/species')
+      .then(res => {
+        const species = res.data;
+        this.setState({ species });
+      });
+      this.setState({ 
+        sightings: this.state.sightings.forEach(s => { s.dateTime = ""; })
+      })
   }
 
   render() {
     return (
       <div className="App">
-        {this.props.server}
-        <ul>
-          {this.state.sightings.map(sighting => 
-            <li key={sighting.id}>{sighting.species} ---- {sighting.description}</li>
-          )}
-        </ul>
+        <SightingList sightings={this.state.sightings} />
       </div>
     );
   }
