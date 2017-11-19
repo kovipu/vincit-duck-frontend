@@ -1,42 +1,63 @@
 import React, { Component } from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { Button, ButtonGroup, Table } from 'reactstrap';
 
 export default class SightingList extends Component {
-  sortByDate(a, b, order) {   // order is desc or asc
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      newestFirst: true
+    };
+  }
+
+  sortByDate(a, b, newestFirst) {
     var d1 = new Date(a.dateTime),
         d2 = new Date(b.dateTime);
-    if (order === 'desc') {
-      return d1 - d2;
-    } else {
+    if (newestFirst) {
       return d2 - d1;
+    } else {
+      return d1 - d2;
     }
   }
 
   render() {
     return (
-      <BootstrapTable ref='sightingTable' data={this.props.sightings}>
-        <TableHeaderColumn dataField='id' hidden isKey> {/* a key field is required */}
-          ID
-        </TableHeaderColumn>
-        <TableHeaderColumn 
-          dataField='dateTime' 
-          width='200' 
-          dataSort 
-          sortFunc={this.sortByDate} 
-          dataFormat={(t) => new Date(t).toLocaleString() /* make the ISO dates human readable */}
-        >
-          Time
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField='species' width='100'>
-          Species
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField='count' width='80' dataAlign='right'>
-          Count
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField='description'>
-          Description
-        </TableHeaderColumn>
-      </BootstrapTable>
-    )
+      <div>
+        <ButtonGroup>
+          <Button 
+            onClick = {() => this.setState({ newestFirst: true })} 
+            active = {this.state.newestFirst}>
+            Newest First
+          </Button>
+          <Button 
+            onClick = {() => this.setState({ newestFirst: false })} 
+            active = {!this.state.newestFirst}>
+            Oldest First
+          </Button>
+        </ButtonGroup>
+        <Table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Species</th>
+              <th>Count</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          {this.props.sightings.sort((a, b) => this.sortByDate(a, b, this.state.newestFirst))
+                              .map((s, i) => {
+            return (
+              <tr>
+                <td>{s.dateTime}</td>
+                <td>{s.species}</td>
+                <td>{s.count}</td>
+                <td>{s.description}</td>
+              </tr>
+            );
+          })}
+        </Table>
+      </div>
+    );
   }
 }
