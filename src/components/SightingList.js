@@ -38,7 +38,6 @@ export default class SightingList extends Component {
         <Table>
           <thead>
             <tr>
-              <th>#</th>
               <th>Date</th>
               <th>Species</th>
               <th>Count</th>
