@@ -36,11 +36,11 @@ export default class SightingList extends Component {
       })
 
     return (
-      <div>
+      <div className='content'>
         <div className='table-header'>
           Duck sightings
           
-          <ButtonGroup className='sorting-buttons'>
+          <ButtonGroup className='btn-group-xs'>
             <Button 
               color='primary'
               onClick={ () => this.setState({ newestFirst: true }) } 
@@ -58,8 +58,7 @@ export default class SightingList extends Component {
             </Button>
           </ButtonGroup>
         </div>
-        
-        <Table className='table-inverse'>
+        <Table>
           <thead>
             <tr>
               <th width='180'>Date</th>
