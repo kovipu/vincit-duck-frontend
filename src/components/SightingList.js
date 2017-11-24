@@ -22,13 +22,21 @@ export default class SightingList extends Component {
     }
   }
 
+  formatDate(date) {
+    return new Date(date).toLocaleString()
+  }
+
+  formatSpecies(species) {
+    return species.charAt(0).toUpperCase() + species.slice(1);
+  }
+
   render() {
     const data = this.props.sightings.sort((a, b) => this.sortByDate(a, b, this.state.newestFirst))
       .map((s, i) => {
         return (
           <tr>
-            <td>{ s.dateTime }</td>
-            <td>{ s.species }</td>
+            <td>{ this.formatDate(s.dateTime) }</td>
+            <td>{ this.formatSpecies(s.species) }</td>
             <td className='numbercell'>{ s.count }</td>
             <td>{ s.description }</td>
           </tr>
