@@ -35,8 +35,10 @@ class App extends Component {
           <h1>Duck Sightings</h1>
           <p>A Frontend for the Vincit summer 2018 coding challenge made using React & Bootstrap</p> 
         </div>
-        <SightingList sightings={this.state.sightings} />
-        <AddSighting />
+        <div className='content'>
+          <SightingList sightings={this.state.sightings} />
+          <AddSighting species={this.state.species} />
+        </div>
       </div>
     );
   }

@@ -1,12 +1,11 @@
 .table-header {
   font: 20px sans-serif;
-  text-align: left;
   padding-top: 10px;
-  padding-bottom: 20px
+  padding-bottom: 30px;
 }
 
 .btn-group {
-  float: right
+  float: left
 }
 
 .btn, .btn:hover {
@@ -16,13 +15,6 @@
 
 .btn.active, .btn.active:hover {
   background-color: #7f7f7f
-}
-
-.content {
-  max-width: 1000px;
-  display: inline-block;
-  background-color: white;
-  padding: 20px
 }
 
 table, th, td {

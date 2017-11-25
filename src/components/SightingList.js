@@ -23,19 +23,25 @@ export default class SightingList extends Component {
   }
 
   formatDate(date) {
-    return new Date(date).toLocaleString()
+    return new Date(date).toLocaleDateString();
+  }
+
+  formatTime(date) {
+    return new Date(date).toLocaleTimeString();
   }
 
   formatSpecies(species) {
-    return species.charAt(0).toUpperCase() + species.slice(1);
+    return species.charAt(0).toUpperCase() + species.slice(1); // capitalize 1st letter
   }
 
   render() {
-    const data = this.props.sightings.sort((a, b) => this.sortByDate(a, b, this.state.newestFirst))
+    const data = this.props.sightings.sort(
+      (a, b) => this.sortByDate(a, b, this.state.newestFirst))
       .map((s, i) => {
         return (
           <tr>
             <td>{ this.formatDate(s.dateTime) }</td>
+            <td>{ this.formatTime(s.dateTime) }</td>
             <td>{ this.formatSpecies(s.species) }</td>
             <td className='numbercell'>{ s.count }</td>
             <td>{ s.description }</td>
@@ -44,10 +50,8 @@ export default class SightingList extends Component {
       })
 
     return (
-      <div className='content'>
+      <div>
         <div className='table-header'>
-          Duck sightings
-          
           <ButtonGroup className='btn-group-xs'>
             <Button 
               color='primary'
@@ -69,9 +73,10 @@ export default class SightingList extends Component {
         <Table>
           <thead>
             <tr>
-              <th width='180'>Date</th>
-              <th width='120'>Species</th>
-              <th width='50'>Count</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Species</th>
+              <th>Count</th>
               <th>Description</th>
             </tr>
           </thead>
