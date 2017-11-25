@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import SightingList from './components/SightingList';
 import AddSighting from './components/AddSighting';
+
 import './App.css';
 
 class App extends Component {

@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+import Moment from 'moment';
+import momentLocalizer from 'react-widgets-moment';
+import { DateTimePicker } from 'react-widgets'
 
 import './AddSighting.css';
+import 'react-widgets/dist/css/react-widgets.css';
+
+Moment.locale('en');
+momentLocalizer();
 
 export default class AddSighting extends Component {
   render() {
@@ -9,16 +16,7 @@ export default class AddSighting extends Component {
 
     return (
       <div className='form'>
-        <Form inline>
-          {/* <Input type='date' name='date' id='form-date' placeholder='Date' />
-          <Input type="time" name="time" id="exampleTime" placeholder="time placeholder" /> */}
-          <Input type="datetime" name="datetime" id="exampleDatetime" placeholder="datetime placeholder" />
-          <Input type='select' name='select' id='form-species'>
-            {speciesOptions}
-          </Input>
-          <Input type='number' name='number' id='form-count' placeholder='Count' />
-          <Input type='text' name='text' id='form-description' placeholder='Description'/>
-        </Form>
+        <DateTimePicker />
       </div>
     );
   }
