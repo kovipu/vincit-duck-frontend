@@ -7,7 +7,7 @@
 .btn-group {
   float: left
 }
-
+/* 
 .btn, .btn:hover {
   color: #7f7f7f;
   background-color: white
@@ -15,11 +15,13 @@
 
 .btn.active, .btn.active:hover {
   background-color: #7f7f7f
-}
+} */
 
-table, th, td {
+th, td {
   border-bottom: 1px solid lightgrey;
   text-align: left
 }
+
+td { font-size: 15px }
 
 .numbercell { text-align: right }

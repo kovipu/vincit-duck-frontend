@@ -1,1 +1,13 @@
-.form { text-align: left }
+.form { 
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 1000px;
+}
+
+.rw-datetime-picker { flex: 0 0 240px }
+
+.rw-dropdown-list { flex: 0 0 120px }
+
+.rw-number-picker { flex: 0 0 80px }
+
+.input-group { width: calc(100% - 240px - 120px - 80px) }

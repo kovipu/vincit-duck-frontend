@@ -73,10 +73,10 @@ export default class SightingList extends Component {
         <Table>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Species</th>
-              <th>Count</th>
+              <th width='120'>Date</th>
+              <th width='120'>Time</th>
+              <th width='120'>Species</th>
+              <th width='80' className='numbercell'>Count</th>
               <th>Description</th>
             </tr>
           </thead>
